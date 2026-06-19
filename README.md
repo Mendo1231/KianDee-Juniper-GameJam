@@ -2,6 +2,12 @@
 
 
 
+###### Theme: Spin to Win
+
+
+
+
+
 June 20th 2026 12:00 AM - June 27th 2026 3:59 PM
 
 
@@ -14,17 +20,29 @@ GitHub - https://github.com/Mendo1231/KianDee-Juniper-GameJam/tree/main
 
 
 
-###### Theme: Awaiting theme
+###### 
+
+###### Ideas -
 
 
 
+Carousels, Swings, Some kind of tether / grapple.
+
+Spinning characters, spinning / rotating terrain.
+
+Ball, spinning top - type player character / npcs
+
+Flips, twirls, spirals
 
 
 
-
-###### Ideas - 
-
+Stop spinning = death?
 
 
 
+Pivoting around a point / moving point / changing point?
+
+
+
+Hammertoss - Rollercoasters - Planets spinning
 
