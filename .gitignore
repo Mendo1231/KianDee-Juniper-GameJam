@@ -104,3 +104,6 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+/KianDee Juniper Project/Library
+/KianDee Juniper Project/Temp
+/KianDee Juniper Project/UserSettings
