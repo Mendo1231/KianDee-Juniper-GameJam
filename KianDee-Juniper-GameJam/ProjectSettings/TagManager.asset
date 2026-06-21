@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - clicker
+  - Shrimp
   layers:
   - Default
   - TransparentFX

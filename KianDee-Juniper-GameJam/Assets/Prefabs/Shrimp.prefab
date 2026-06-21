@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2312636446896438463}
   - component: {fileID: 6675271277220187586}
-  - component: {fileID: 246864229234663775}
+  - component: {fileID: 2465708496940041897}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1599955007000802239}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.09, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5822042936117421046, guid: 1ea90906e42dc534394abe890861ed4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -93,23 +93,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!111 &246864229234663775
-Animation:
+--- !u!95 &2465708496940041897
+Animator:
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599955007000802239}
   m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 92c21a0458ad7b84a90bcdc2419addcb, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 92c21a0458ad7b84a90bcdc2419addcb, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6740a0076759de54a8510dd73aab9fc4, type: 2}
+  m_CullingMode: 0
   m_UpdateMode: 0
-  m_CullingType: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5747946508952193602
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   partsys: {fileID: 2785532975198164854, guid: 9d044b32d5f1ba14586a77e052bbd05b, type: 3}
+  impactPrefab: {fileID: 255496366083575818, guid: 77370bdcf4af20e42be744163f786793, type: 3}
 --- !u!58 &752958515066022441
 CircleCollider2D:
   m_ObjectHideFlags: 0

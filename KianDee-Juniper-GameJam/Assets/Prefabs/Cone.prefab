@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   partsys: {fileID: 2785532975198164854, guid: c732778e883d7f74d9498795b5596a34, type: 3}
+  impactPrefab: {fileID: 255496366083575818, guid: 77370bdcf4af20e42be744163f786793, type: 3}
 --- !u!58 &8834272141513828893
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -82,7 +83,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.556
+  m_Radius: 0.5
 --- !u!1 &8649710209285088989
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +163,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2012340037008561517, guid: a035f1801cfabd243a1c942e391c497f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

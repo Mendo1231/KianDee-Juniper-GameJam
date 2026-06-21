@@ -6,10 +6,12 @@ public class Move : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     Rigidbody2D rigidbody;
     Camera camera;
-    public float thrust = 1;
+    public float thrust;
     Vector2 vel;
     public bool pulling = false;
     LayerMask IgnoreLayerMask;
+
+    public float drag=0.1f;
 
     List<ContactPoint2D> contacts = new List<ContactPoint2D>();
 
@@ -22,10 +24,13 @@ public class Move : MonoBehaviour
     Vector3 debugstart;
     Vector3 debugend;
 
+    public float stopThresh=0.5f;
+    public float timeScale=1f;
+    float modifiedTime;
+
     // Update is called once per frame
     void Update()
     {
-        
         if (Input.GetMouseButtonDown(0)) 
         {
             //Debug.Log("pew");
@@ -61,14 +66,22 @@ public class Move : MonoBehaviour
             }
         }
 
-        transform.position = new Vector3(transform.position.x + vel.x * Time.deltaTime, transform.position.y + vel.y * Time.deltaTime, transform.position.z);
-
+        modifiedTime = Time.deltaTime * timeScale;
+        transform.position = new Vector3(transform.position.x + vel.x * modifiedTime, transform.position.y + vel.y * modifiedTime, transform.position.z);
         
         if (contacts.Count > 0) HandleCollision();
     }
 
     void FixedUpdate(){
-        
+        if(vel != Vector2.zero){
+            if(Mathf.Abs(vel.y) + Mathf.Abs(vel.x) > 0.5f + drag ){
+                vel.x = vel.x * (1-drag);
+                vel.y = vel.y * (1-drag);
+            }else{
+                Debug.Log("STOP");
+                vel = Vector2.zero;
+            }
+        }
     }
 
     void HandleCollision(){
