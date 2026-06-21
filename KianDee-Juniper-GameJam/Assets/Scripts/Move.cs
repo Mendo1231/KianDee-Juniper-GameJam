@@ -15,11 +15,7 @@ public class Move : MonoBehaviour
 
     List<ContactPoint2D> contacts = new List<ContactPoint2D>();
 
-    void Start()
-    {
-        camera = Camera.main;
-        rigidbody = GetComponent<Rigidbody2D>();
-    }
+
 
     Vector3 debugstart;
     Vector3 debugend;
@@ -27,6 +23,14 @@ public class Move : MonoBehaviour
     public float stopThresh=0.5f;
     public float timeScale=1f;
     float modifiedTime;
+
+    public Animator anim;
+
+    void Start()
+    {
+        camera = Camera.main;
+        rigidbody = GetComponent<Rigidbody2D>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -82,6 +86,8 @@ public class Move : MonoBehaviour
                 vel = Vector2.zero;
             }
         }
+
+        anim.SetFloat("SpinMulti", (Mathf.Abs(vel.y) + Mathf.Abs(vel.x)) / thrust);
     }
 
     void HandleCollision(){
