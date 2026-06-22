@@ -15,9 +15,7 @@ public class Move : MonoBehaviour
 
     List<ContactPoint2D> contacts = new List<ContactPoint2D>();
 
-
-
-    Vector3 debugstart;
+    Vector2 pullstart;
     Vector3 debugend;
 
     public float stopThresh=0.5f;
@@ -25,11 +23,14 @@ public class Move : MonoBehaviour
     float modifiedTime;
 
     public Animator anim;
+    public GameObject knockPrefab;
+    GameManager gm;
 
     void Start()
     {
         camera = Camera.main;
         rigidbody = GetComponent<Rigidbody2D>();
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -42,7 +43,7 @@ public class Move : MonoBehaviour
             RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition), Mathf.Infinity, ~IgnoreLayerMask);
             foreach(RaycastHit2D hit in hits){
                 if (hit.collider.gameObject.tag == "Player"){
-                    debugstart=hit.point;
+                    pullstart=hit.point;
                     pulling=true;
                 }
             }
@@ -51,7 +52,7 @@ public class Move : MonoBehaviour
         if(pulling==true){
             RaycastHit2D hit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
             debugend=hit.point;
-            Debug.DrawLine(debugstart, debugend, Color.red);
+            Debug.DrawLine(pullstart, debugend, Color.red);
         }
 
         if (Input.GetMouseButtonUp(0)) 
@@ -61,9 +62,9 @@ public class Move : MonoBehaviour
                 RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition), Mathf.Infinity, ~IgnoreLayerMask);
                 foreach(RaycastHit2D hit in hits){
                     if (hit.collider.tag == "clicker"){
-                        Vector2 shuntDir = Vector2.Normalize(new Vector2(transform.position.x - hit.point.x, transform.position.y - hit.point.y));
-                        Debug.Log(Mathf.Min(Vector2.Distance(transform.position, hit.point), thrust));
-                        float shootSpeed = Mathf.Min(Vector2.Distance(transform.position, hit.point), thrust);
+                        gm.NewPull();
+                        Vector2 shuntDir = Vector2.Normalize(new Vector2(pullstart.x - hit.point.x, pullstart.y - hit.point.y));
+                        float shootSpeed = Mathf.Min(Vector2.Distance(pullstart, hit.point), thrust);
                         vel = new Vector2(shuntDir.x * shootSpeed, shuntDir.y * shootSpeed);
                     }
                 }
@@ -82,7 +83,6 @@ public class Move : MonoBehaviour
                 vel.x = vel.x * (1-drag);
                 vel.y = vel.y * (1-drag);
             }else{
-                Debug.Log("STOP");
                 vel = Vector2.zero;
             }
         }
@@ -101,11 +101,16 @@ public class Move : MonoBehaviour
 
         vel = Vector2.Reflect(vel, combinedNormal);
 
+        
+
         contacts = new List<ContactPoint2D>();
     }
 
     void OnCollisionEnter2D(Collision2D collision) 
     {
         contacts.Add(collision.contacts[0]);
+
+        GameObject knockClone = Instantiate(knockPrefab, collision.contacts[0].point, transform.rotation);
+        if(knockClone.GetComponent<AudioSource>() != null) knockClone.GetComponent<AudioSource>().pitch = Random.Range(0.5f, 1.5f);
     }
 }

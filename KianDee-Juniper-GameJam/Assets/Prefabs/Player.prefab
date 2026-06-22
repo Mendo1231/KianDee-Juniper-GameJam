@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7616278317545410284}
   - component: {fileID: 8203186447482045564}
   - component: {fileID: 2759120522756568343}
+  - component: {fileID: 6828223828341118251}
   m_Layer: 0
   m_Name: ChairSprite
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5335078118269629911}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.25, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -938,6 +939,28 @@ MonoBehaviour:
     - rid: 8046924759734419583
       type: {class: ShadowShape2DProvider_SpriteRenderer, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
+--- !u!95 &6828223828341118251
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5335078118269629911}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1417db24aa53e3c4b8c8e5225204d442, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5440330477571256750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,7 +1032,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.6
+  m_Radius: 0.5
 --- !u!50 &1685506028296220272
 Rigidbody2D:
   serializedVersion: 5
@@ -1054,6 +1077,8 @@ MonoBehaviour:
   drag: 0.005
   stopThresh: 0.5
   timeScale: 1
+  anim: {fileID: 6828223828341118251}
+  knockPrefab: {fileID: 6091312640218249709, guid: 5aa846d1365b7184ea40025b4b0f0846, type: 3}
 --- !u!95 &8394817634779566247
 Animator:
   serializedVersion: 7

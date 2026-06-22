@@ -6,6 +6,8 @@ TagManager:
   tags:
   - clicker
   - Shrimp
+  - GameManager
+  - Goal
   layers:
   - Default
   - TransparentFX
@@ -45,4 +47,5 @@ TagManager:
     locked: 0
   m_RenderingLayers:
   - Default
+  - Floor
   m_MigratedRenderPipelines: []
