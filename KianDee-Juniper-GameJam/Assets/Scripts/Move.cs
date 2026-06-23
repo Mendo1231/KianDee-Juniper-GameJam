@@ -64,7 +64,7 @@ public class Move : MonoBehaviour
                     if (hit.collider.tag == "clicker"){
                         gm.NewPull();
                         Vector2 shuntDir = Vector2.Normalize(new Vector2(pullstart.x - hit.point.x, pullstart.y - hit.point.y));
-                        float shootSpeed = Mathf.Min(Vector2.Distance(pullstart, hit.point), thrust);
+                        float shootSpeed = Mathf.Min(Vector2.Distance(pullstart, hit.point)*2, thrust);
                         vel = new Vector2(shuntDir.x * shootSpeed, shuntDir.y * shootSpeed);
                     }
                 }

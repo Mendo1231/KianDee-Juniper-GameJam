@@ -22,6 +22,7 @@ public class Breakable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.tag == "Player"){
+            Debug.Log("Collider! "+collider);
             hit(collider);
         }
     }
@@ -34,7 +35,8 @@ public class Breakable : MonoBehaviour
         gm.TargetHit(this.gameObject);
 
         collider.gameObject.GetComponent<Animator>().SetTrigger("Hit");
-        GameObject impactClone = Instantiate(impactPrefab, GetComponent<CircleCollider2D>().ClosestPoint(collider.gameObject.transform.position), transform.rotation);
+        GameObject impactClone = Instantiate(impactPrefab, GetComponent<Collider2D>().ClosestPoint(collider.gameObject.transform.position), transform.rotation);
+        Debug.Log("Destroy! "+this.gameObject);
         Destroy(this.gameObject);
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - Shrimp
   - GameManager
   - Goal
+  - LevelInfo
+  - ScoreScreen
   layers:
   - Default
   - TransparentFX
