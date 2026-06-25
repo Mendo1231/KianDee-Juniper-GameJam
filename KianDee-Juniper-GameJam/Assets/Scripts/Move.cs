@@ -15,7 +15,7 @@ public class Move : MonoBehaviour
 
     List<ContactPoint2D> contacts = new List<ContactPoint2D>();
 
-    Vector2 pullstart;
+    Vector3 pullstart;
     Vector3 debugend;
 
     public float stopThresh=0.5f;
@@ -25,6 +25,9 @@ public class Move : MonoBehaviour
     public Animator anim;
     public GameObject knockPrefab;
     GameManager gm;
+
+    public GameObject predictorPrefab;
+    GameObject predictor;
 
     void Start()
     {
@@ -53,12 +56,20 @@ public class Move : MonoBehaviour
             RaycastHit2D hit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
             debugend=hit.point;
             Debug.DrawLine(pullstart, debugend, Color.red);
+
+            if(predictor == null){
+                predictor = Instantiate(predictorPrefab,transform.position,transform.rotation);
+                predictor.transform.SetParent(gameObject.transform);
+            }else{
+                predictor.GetComponent<PredictorScript>().rayDir = (pullstart - debugend);
+            }
         }
 
         if (Input.GetMouseButtonUp(0)) 
         {
             if(pulling==true){
                 pulling=false;
+                Destroy(predictor);
                 RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition), Mathf.Infinity, ~IgnoreLayerMask);
                 foreach(RaycastHit2D hit in hits){
                     if (hit.collider.tag == "clicker"){

@@ -58,13 +58,25 @@ public class GameManager : MonoBehaviour
             if(GameObject.FindGameObjectWithTag("ScoreScreen")!=null){
                 ScoreScreen = GameObject.FindGameObjectWithTag("ScoreScreen");
             }
-            Debug.Log("Round Complete!");
             Level++;
             if(ScoreScreen!=null){
                 ScoreScreen.transform.SetParent(Camera.transform);
                 ScoreScreen.GetComponent<Animator>().SetTrigger("SwingIn");
+                ScoreScreen.GetComponent<ScoreScreenScript>().SetScore(Score,Pulls,PullPar);
             }
         }
+    }
+
+    public void startScoring(){
+        int i;
+        if(Pulls < PullPar){
+            i =3;
+        } else if (Pulls == PullPar){
+            i =2;
+        } else{
+            i =1;
+        }
+        ScoreScreen.GetComponent<ScoreScreenScript>().AnimStars(i);
     }
     
     public void GameStart(){
@@ -83,9 +95,13 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Destroy(ScoreScreen.gameObject);
+        if(ScoreScreen!=null)Destroy(ScoreScreen.gameObject);
         CameraAnim.SetTrigger("SwingIn");
         FindShrimps();
+
+        Score = 0;
+        Streak = 0;
+        Pulls = 0;
 
         if(GameObject.FindGameObjectWithTag("LevelInfo")!=null){
             Debug.Log("Found it!");

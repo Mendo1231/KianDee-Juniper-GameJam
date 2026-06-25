@@ -1116,6 +1116,7 @@ MonoBehaviour:
   timeScale: 1
   anim: {fileID: 6828223828341118251}
   knockPrefab: {fileID: 6091312640218249709, guid: 5aa846d1365b7184ea40025b4b0f0846, type: 3}
+  predictorPrefab: {fileID: 7762000167160717154, guid: 78d443f7942d583469295cb6bb6b9a2c, type: 3}
 --- !u!95 &8394817634779566247
 Animator:
   serializedVersion: 7
