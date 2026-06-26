@@ -69,7 +69,6 @@ public class ScoreScreenScript : MonoBehaviour
         scoreInt = score;
         animScore = true;
         
-        
         pullMesh.text = pull.ToString();
         parMesh.text = par.ToString();
     }

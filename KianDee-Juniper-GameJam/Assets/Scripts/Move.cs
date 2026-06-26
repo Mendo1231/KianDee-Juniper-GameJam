@@ -82,9 +82,6 @@ public class Move : MonoBehaviour
             }
         }
 
-        modifiedTime = Time.deltaTime * timeScale;
-        transform.position = new Vector3(transform.position.x + vel.x * modifiedTime, transform.position.y + vel.y * modifiedTime, transform.position.z);
-        
         if (contacts.Count > 0) HandleCollision();
     }
 
@@ -98,6 +95,9 @@ public class Move : MonoBehaviour
             }
         }
 
+        modifiedTime = Time.deltaTime * timeScale;
+        transform.position = new Vector3(transform.position.x + vel.x * modifiedTime, transform.position.y + vel.y * modifiedTime, transform.position.z);
+
         anim.SetFloat("SpinMulti", (Mathf.Abs(vel.y) + Mathf.Abs(vel.x)) / thrust);
     }
 
@@ -109,6 +109,8 @@ public class Move : MonoBehaviour
         }
 
         combinedNormal = Vector2.Normalize(combinedNormal);
+
+        transform.position = new Vector3 (transform.position.x + (combinedNormal.x * 0.01f),transform.position.y + (combinedNormal.y * 0.01f),transform.position.z);
 
         vel = Vector2.Reflect(vel, combinedNormal);
 
